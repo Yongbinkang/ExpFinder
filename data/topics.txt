@@ -1,0 +1,1 @@
+["question answer system", "computational linguistics", "clustering method", "data mining"]
