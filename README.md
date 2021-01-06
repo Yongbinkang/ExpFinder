@@ -1,5 +1,5 @@
 # ExpFinder
-ExpFinder: A Hybrid Expert Finding Model Integrating N-gram Vector Space Model and $\mu$CO-HITS
+ExpFinder: A Hybrid Expert Finding Model Integrating N-gram Vector Space Model and μCO-HITS
 
 ## Introduction
 
