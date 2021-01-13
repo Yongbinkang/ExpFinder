@@ -19,7 +19,7 @@ pip install requirements.txt
 ## Notes
 1. The `data` folder stores all required data for the algorithm.
 2. Pipelines for data generation and algorithm are presented in the `experimental pipline.ipynb` file. We recommend to clone the repository and run the file locally for more visualable view.
-3. Details of the source code are stored in the `src` folder with clear documentation for each functions.
+3. Details of the source code are stored in the `src` folder with clear documentation for each function.
 
 ## Flow
 
