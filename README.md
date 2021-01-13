@@ -21,4 +21,14 @@ pip install requirements.txt
 2. Pipelines for data generation and algorithm are presented in the `experimental pipline.ipynb` file. We recommend to clone the repository and run the file locally for more visualable view.
 3. Details of the source code are stored in the `src` folder with clear documentation for each functions.
 
+## Flow
+
+![Execution flow](https://github.com/Yongbinkang/ExpFinder/blob/main/images/flow.png)
+
+1. Raw data is read and transform to a proper format like dataframes or vectors.
+2. With the prepared data, we generate the necessary data for the ExpFinder algorithm such as expert-document, document-phrase, document-topic, personalised matrices and expert-document counted vectors.
+3. The data is fitted into the ExpFinder algorithm the best parameters based on the empirical experiment.
+4. The expected output from the algorithm contains weights of between experts and topics as well as documents and topics
+
+
 ## Citing
