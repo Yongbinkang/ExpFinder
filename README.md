@@ -16,10 +16,21 @@ pip install requirements.txt
 ```
 3. Download the SciBert model into the `model/` folder as mentioned in [this](https://github.com/Yongbinkang/ExpFinder/tree/main/model).
 
-## Notes
-1. The `data` folder stores all required data for the algorithm.
-2. Pipelines for data generation and algorithm are presented in the `experimental pipline.ipynb` file. We recommend to clone the repository and run the file locally for more visualable view.
-3. Details of the source code are stored in the `src` folder with clear documentation for each function.
+## Directory structure
+
+For more instructions on setting up the project to run the pipeline in the `experimental pipline.ipynb` file, we sketch out the directory structure with description below:
+
+* The __`data/`__ directory contains input or output data for the entire process. Four current data files in this directory is required for the data generation process.
+* The __`model/`__ directory contains the SciBert model. Due to the large size of the model, we do not upload it here. For more details on how to download the model, please refer to the instruction at [this](https://github.com/Yongbinkang/ExpFinder/blob/main/model/README.md).
+* The __`src/`__ directory contains the source code for the entire process including:
+  * The __`algo/`__ directory has the `expfinder.py` file which is the source code for the ExpFinder algorithm. For more details about the algorithm, please refer to our paper.
+  * The __`controller`__ directory has the `generator.py` file which is used to control the data generation process.
+  * The __`lib`__ directory has four different python files serving different purposes as:
+    * The `np_extractor.py` file aims to extract noun phrases from documents (using the `tokenization` module below) and estimates N-gram TFIDF for each noun phrase.
+    * The `semantic.py` file aims to vectorise every single phrase by using the SciBert model.
+    * The `tokenization.py` file aims to extract tokens and noun phrases with their statistical information. Note that this contains the parser for the noun phrase extraction.
+    * The `weight.py` file aims to calculate personalised weights for given vectors or matrices.
+* The __`experimental pipeline.ipynb`__ file contains pipelines for the entire process which is shown in the __Flow__ section below.
 
 ## Flow
 
@@ -29,6 +40,7 @@ pip install requirements.txt
 2. With the prepared data, we generate the necessary data for the ExpFinder algorithm such as expert-document, document-phrase, document-topic, personalised matrices and expert-document counted vectors.
 3. The data is fitted into the ExpFinder algorithm the best parameters based on the empirical experiment.
 4. The expected output from the algorithm contains weights of between experts and topics as well as documents and topics
+
 
 
 ## Citing
