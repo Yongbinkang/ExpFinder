@@ -30,17 +30,18 @@ For more instructions on setting up the project to run the pipeline in the `expe
     * The `semantic.py` file aims to vectorise every single phrase by using the SciBert model.
     * The `tokenization.py` file aims to extract tokens and noun phrases with their statistical information. Note that this contains the parser for the noun phrase extraction.
     * The `weight.py` file aims to calculate personalised weights for given vectors or matrices.
-* The __`experimental pipeline.ipynb`__ file contains pipelines for the entire process which is shown in the __Flow__ section below.
+* The __`experimental pipeline.ipynb`__ file contains pipelines for the entire process which is shown in the __Demo__ section below.
 
-## Flow
+## Demo
 
 ![Execution flow](https://github.com/Yongbinkang/ExpFinder/blob/main/images/flow.png)
 
-1. Raw data is read and transform to a proper format like dataframes or vectors.
-2. With the prepared data, we generate the necessary data for the ExpFinder algorithm such as expert-document, document-phrase, document-topic, personalised matrices and expert-document counted vectors.
-3. The data is fitted into the ExpFinder algorithm the best parameters based on the empirical experiment.
-4. The expected output from the algorithm contains weights of between experts and topics as well as documents and topics
+In this section, we describe the demo of ExpFinder in the __`experimental pipeline.ipynb`__ file. The flow of the demo is presented as follows:
 
-
+* In the preparation phase, raw data (experts, their associated documents, and topics) is read and transform to a proper format like dataframes or vectors.
+* In the generation phase, we apply statistical models to generate data for our *ExpFinder* algorithm. These includes:
+  * Expert-document, document-phrase, document-topic and personalised matrices
+  * Expert-document counted vector (counting a number of documents per expert) and Document-expert counted vector (counting a number of experts per document)
+* In the training phase, we fitted all generated data into the ExpFinder algorithm with the best hyperparameters based on the empirical experiement. Please refer to our paper for more details. Then, we obtain results from the model which contain authority scores (weights of experts over topics) and hub scores (weights of documents over topics).
 
 ## Citing
