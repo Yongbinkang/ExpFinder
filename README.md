@@ -45,3 +45,16 @@ In this section, we describe the demo of ExpFinder in the __`experimental pipeli
 * In the training phase, we fitted all generated data into the ExpFinder algorithm with the best hyperparameters based on the empirical experiement. Please refer to our paper for more details. Then, we obtain results from the model which contain authority scores (weights of experts over topics) and hub scores (weights of documents over topics).
 
 ## Citing
+
+If you use `ExpFinder` in your research, please cite [ExpFinder: An Ensemble Expert Finding Model Integrating N-gram Vector Space Model and μCO-HITS](https://arxiv.org/abs/2101.06821)
+
+```
+@misc{kang2021expfinder,
+      title={ExpFinder: An Ensemble Expert Finding Model Integrating $N$-gram Vector Space Model and $\mu$CO-HITS}, 
+      author={Yong-Bin Kang and Hung Du and Abdur Rahim Mohammad Forkan and Prem Prakash Jayaraman and Amir Aryani and Timos Sellis},
+      year={2021},
+      eprint={2101.06821},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR}
+}
+```
