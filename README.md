@@ -44,7 +44,7 @@ In this section, we describe the demo of ExpFinder in the __`experimental pipeli
   * Expert-document counted vector (counting a number of documents per expert) and Document-expert counted vector (counting a number of experts per document)
 * In the training phase, we fitted all generated data into the ExpFinder algorithm with the best hyperparameters based on the empirical experiement. Please refer to our paper for more details. Then, we obtain results from the model which contain authority scores (weights of experts over topics) and hub scores (weights of documents over topics).
 
-## Citing
+## Citation
 
 If you use `ExpFinder` in your research, please cite [ExpFinder: An Ensemble Expert Finding Model Integrating N-gram Vector Space Model and μCO-HITS](https://arxiv.org/abs/2101.06821)
 
