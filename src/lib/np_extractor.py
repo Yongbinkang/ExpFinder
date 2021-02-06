@@ -3,7 +3,7 @@ import numpy as np
 import math
 from src.lib.tokenization import Tokenizer
 
-def extract_np(corpus, stopwords, max_phrase_len):
+def extract_np(corpus, stopwords, max_phrase_len, pattern=None):
 	''' This function extracts noun phrases as well as tokens from a document
 	in a given corpus
 
@@ -15,6 +15,8 @@ def extract_np(corpus, stopwords, max_phrase_len):
 		A set of stopwords
 	max_phrase_len: int
 		An inclusive maximum lengh of a particular phrase
+	pattern: Regex str (default: None)
+		A linguistic pattern for extracting phrases		
 	
 	Return
 	------
@@ -26,7 +28,7 @@ def extract_np(corpus, stopwords, max_phrase_len):
 		'tokens': [],
 		'np': []
 	}
-	tokenizer = Tokenizer(stopwords)
+	tokenizer = Tokenizer(stopwords, grammar=pattern)
 
 	# Process per document in the corpus
 	for doc in corpus:

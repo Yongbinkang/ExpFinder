@@ -14,7 +14,11 @@ git clone https://github.com/Yongbinkang/ExpFinder.git
 ```
 pip install requirements.txt
 ```
-3. Download the SciBert model into the `model/` folder as mentioned in [this](https://github.com/Yongbinkang/ExpFinder/tree/main/model).
+3. Copy and paste the command below for setting up Python path to execute file under the `scripts` directory
+```
+export PYTHONPATH="$PWD"
+```
+4. Download the SciBert model into the `model/` folder as mentioned in [this](https://github.com/Yongbinkang/ExpFinder/tree/main/model).
 
 ## Directory structure
 
@@ -30,6 +34,7 @@ For more instructions on setting up the project to run the pipeline in the `expe
     * The `semantic.py` file aims to vectorise every single phrase by using the SciBert model.
     * The `tokenization.py` file aims to extract tokens and noun phrases with their statistical information. Note that this contains the parser for the noun phrase extraction.
     * The `weight.py` file aims to calculate personalised weights for given vectors or matrices.
+* The __`scripts`__ directory contains scripts for controlling all processes of a particular pipeline or demonstrating an example of a particular process.
 * The __`experimental pipeline.ipynb`__ file contains pipelines for the entire process which is shown in the __Demo__ section below.
 
 ## Demo

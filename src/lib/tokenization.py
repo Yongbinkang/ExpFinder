@@ -9,6 +9,8 @@ class Tokenizer:
 	----------
 	stopwords: set(str)
 		A set of stopwords
+	grammar: Regex str (default: None)
+		A linguistic pattern for extracting phrases
 	
 	Attributes
 	----------
@@ -37,7 +39,7 @@ class Tokenizer:
 		1.5. Ellipsis
 		1.6. These are separate tokens; includes ], [
 	'''
-	def __init__(self, stopwords):
+	def __init__(self, stopwords, grammar=None):
 		self.stopwords = stopwords
 		self.lemmatizer = WordNetLemmatizer()
 		self.pos_family = {
@@ -47,6 +49,7 @@ class Tokenizer:
 			'adj': ['JJ', 'JJR', 'JJS'],
 			'adv': ['RB', 'RBR', 'RBS', 'WRB']
 		}
+		self.grammar = grammar
 		self.np_parser = self._build_np_parser()    	 
 		self.digit_pattern = re.compile(r"[\d/-]+$")
 		self.word_pattern = r'''(?x)
@@ -243,8 +246,11 @@ class Tokenizer:
 
 
 	def _build_np_parser(self):
-		noun_grammar = r'''
-			NP: {<NN.*|JJ.*|VBN.*|VBG.*>*<NN.*>}
-				{<NNP>+}
-			'''
+		if self.grammar is not None:
+			noun_grammar = self.grammar
+		else:
+			noun_grammar = r'''
+				NP: {<NN.*|JJ.*|VBN.*|VBG.*>*<NN.*>}
+					{<NNP>+}
+				'''
 		return nltk.RegexpParser(noun_grammar)
