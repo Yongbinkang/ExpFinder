@@ -1,1 +1,1 @@
-["question answer system", "computational linguistics", "clustering method", "data mining"]
+["health application", "natural language processing", "computer vision"]
