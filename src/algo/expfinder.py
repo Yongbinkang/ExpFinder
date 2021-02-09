@@ -33,7 +33,7 @@ class EF:
 	de_count: np-array
 		A vector containing number of experts per publication
 	'''
-	def __init__(self, ed_graph, et_matrix, dt_matrix, lamb_e, lamb_d, max_iter, ed_count, de_count):
+	def __init__(self, ed_graph, et_matrix, dt_matrix, lamb_e, lamb_d, max_iter, ed_count, de_count, **kwargs):
 		# Validate params
 		if not isinstance(ed_graph, type(nx.DiGraph())):
 			raise TypeError("The directed graph must be of type nx.DiGraph, but is {}".format(type(ed_graph)))

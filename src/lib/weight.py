@@ -1,8 +1,87 @@
 
 import pandas as pd
 import numpy as np
+import math
 
-def calc_personlised_weight(ed_matrix, dtopic_matrix, topic_vec, alpha):
+def calc_ngram_tfidf(model_dict, method="indirect"):
+	''' This function runs nTFIDF calculation tasks
+
+	Parameters
+	----------
+	model_dict: dict
+		A dictionary containing tf infomration for terms and phrases
+	method: str
+		A calculation method for nIDF ("indirect" - default | "direct")
+
+	Return
+	------
+	res: np.array
+		A nTFIDF matrix of phrases
+	sel_phrases: array_like
+		A list of selected phrases
+	'''
+	# Parse model
+	tft_model = model_dict['tft_model']
+	tft_trans = model_dict['tft_trans']
+	tfp_model = model_dict['tfp_model']
+	tfp_trans = model_dict['tfp_trans']
+
+	# Preparing data
+	terms 			= tft_model.get_feature_names()
+	tf_terms 		= tft_trans.todense()
+	idx_terms 		= {k: idx for idx, k in enumerate(terms)}
+	phrases 		= tfp_model.get_feature_names()
+	tf_phrases  	= tfp_trans.todense()
+	dfg_phrases 	= np.count_nonzero(np.array(tf_phrases), axis=0)
+	idx_phrases 	= {k: idx for idx, k in enumerate(phrases)}
+	doc_len 		= tf_terms.shape[0]
+
+	# Intialise for N-gram TFIDF
+	shape = (doc_len, len(idx_phrases))
+	res = np.zeros(shape).astype(np.float32)
+	pos_res = []
+
+	# Calculating N-gram TFIDF
+	for ind, phrase in enumerate(phrases):
+		# Find candidates
+		terms = phrase.split('_')
+		candidates = []
+		for term in terms:
+			if term in idx_terms:
+				t_pos = idx_terms[term]
+				candidates.append(t_pos)
+
+		# Calculate n-tfidf for existing candidates
+		if len(candidates) != 0:
+			tf_vec = tf_terms[:, candidates]
+			conjunction = np.logical_and.reduce(tf_vec, axis=1)
+			df_theta = np.count_nonzero(conjunction)			
+			phrase_pos = idx_phrases[phrase]
+			dfg = dfg_phrases[phrase_pos]
+
+			# Calculate nIDF
+			if method == "indirect":
+				idf = math.log(np.divide((doc_len * dfg) + 1, pow(df_theta, 2) + 1)) + 1
+			elif method == "direct":
+				idf = math.log(np.divide(doc_len + 1, df_theta + 1)) + 1
+			
+			# Only consider IDF > 0 
+			if idf > 0:
+				pos_res.append(phrase_pos)
+
+			# Calculate TF
+			tf = np.divide(np.sum(tf_vec, axis=1),len(terms))
+
+			# Calculate TFIDF
+			tfidf = np.array(np.multiply(tf, idf))[:, 0]
+			res[:, phrase_pos] = tfidf
+	
+	# Only consider IDF > 0 
+	res = res[:, pos_res]
+	sel_phrases = np.array(phrases)[pos_res]
+	return res, sel_phrases		
+
+def calc_pr_weight(ed_matrix, dtopic_matrix, topic_vec, alpha):
 	''' This function calculates the personalised weight of documents and experts
 
 	Paramaters

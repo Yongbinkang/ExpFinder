@@ -5,7 +5,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.preprocessing import normalize
 from sklearn.metrics.pairwise import cosine_similarity
 from scipy.sparse import csr_matrix
-from src.lib import np_extractor, semantic, weight
+from src.lib import vectorizer, weight
+import networkx as nx
 
 #################### MATRIX ########################
 
@@ -90,7 +91,7 @@ def generate_dp_matrix(tf_terms, tf_phrases, doc_ids, method="indirect"):
 	}
 
 	# Run nTFIDF tasks
-	tfidf_ngrams, phrases = np_extractor.run_ngram_tasks(model_dict, method)
+	tfidf_ngrams, phrases = weight.calc_ngram_tfidf(model_dict, method)
 
 	# Wrap result
 	res = {
@@ -131,7 +132,7 @@ def generate_dtop_matrix(dp_matrix, topics, model_dict, top_n=1):
 	phrases = dp_matrix.columns
 	topic_scores = []
 	topic_phrase = dict()
-	vectorizer = semantic.PhraseVectorizer(model, tokenizer)
+	pVectorizer = vectorizer.PhraseVectorizer(model, tokenizer)
 	
 
 	# Embed phrases into vectors (if there are trained ones, load it instead)
@@ -141,7 +142,7 @@ def generate_dtop_matrix(dp_matrix, topics, model_dict, top_n=1):
 			temp_p = ' '.join(phrase.split('_'))
 			if temp_p == '':
 				continue
-			phrase_vecs.append(vectorizer.transform(temp_p)[0])
+			phrase_vecs.append(pVectorizer.transform(temp_p)[0])
 	else:
 		phrase_vecs = trained_vecs
 
@@ -149,7 +150,7 @@ def generate_dtop_matrix(dp_matrix, topics, model_dict, top_n=1):
 	for topic in topics:		
 		sim_phrases = []
 		sim_vals = []
-		topic_vec = vectorizer.transform(topic)
+		topic_vec = pVectorizer.transform(topic)
 
 		# Find top-n phrase
 		scores = cosine_similarity(topic_vec, phrase_vecs)[0]
@@ -214,7 +215,7 @@ def generate_pr_matrix(ed_matrix, dtopic_matrix, topic_vec, ed_graph, alpha=0.0)
 	zero_vec = np.zeros(len(dtopic_matrix.columns), dtype=np.float32)
 
 	# Calculate personalisation
-	exp_pr_df, doc_pr_df = weight.calc_personlised_weight(ed_matrix, dtopic_matrix, topic_vec, alpha)
+	exp_pr_df, doc_pr_df = weight.calc_pr_weight(ed_matrix, dtopic_matrix, topic_vec, alpha)
 
 	# Mapping nodes
 	for node in ed_graph.nodes():
@@ -239,6 +240,35 @@ def generate_pr_matrix(ed_matrix, dtopic_matrix, topic_vec, ed_graph, alpha=0.0)
 		'matrix': csr_matrix(doc_pr)
 	}
 	return res_exp, res_doc
+
+#################### GRAPH ########################
+def generate_ecg(ed_df):
+	''' This function is to build an ECG graph given associations of expert
+	and documents in the pandas DataFrame
+
+	Parameters
+	----------
+	ed_df: pd.DataFrame
+		An Expert-Document dataframe which contains two columns `doc_id` and `exp_id`
+
+	Return
+	------
+	G: nx.DiGraph
+		A directed, weighted bipartite graph whose directions are from documents to experts
+	'''
+	# Validate parameters
+	if 'doc_id' not in ed_df.columns:
+		raise ValueError('en_df must contain the `doc_id` column')
+	if 'exp_id' not in ed_df.columns:
+		raise ValueError('en_df must contain the `exp_id` column')
+	
+	# Build graph
+	edges = ed_df[['doc_id', 'exp_id']].values
+	G = nx.DiGraph()
+	G.add_edges_from(edges, weight=1, length=0.05)
+
+	return G
+
 
 #################### VECTOR ########################
 
