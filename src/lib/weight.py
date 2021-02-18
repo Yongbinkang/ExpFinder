@@ -116,7 +116,6 @@ def calc_pr_weight(ed_matrix, dtopic_matrix, topic_vec, alpha):
 	expert_ids = ed_matrix.index
 	doc_ids = dtopic_matrix.index
 	topics = dtopic_matrix.columns
-	topic_vec = topic_vec.reshape(-1, 1)
 
 	# Calculate personalisation for document
 	pr_doc = dtopic_matrix.values.dot(1 - alpha) + topic_vec.dot(alpha)
