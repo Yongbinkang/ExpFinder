@@ -173,7 +173,8 @@ def generate_dtop_matrix(dp_matrix, topics, model_dict, top_n=1):
 		topic_phrase[topic] = [(sim_phrases[i], sim_vals[i]) for i in range(len(sim_phrases))]
 
 	# Normalisation
-	topic_scores = normalize(np.array(topic_scores), norm='l1', axis=0)
+	topic_scores = np.array(topic_scores)
+	# topic_scores = normalize(np.array(topic_scores), norm='l1', axis=0)
 
 	# Wrap result
 	res = {

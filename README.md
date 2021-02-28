@@ -22,6 +22,8 @@ export PYTHONPATH="$PWD"
 
 ## Directory structure
 
+![Directory structure](https://github.com/Yongbinkang/ExpFinder/blob/main/images/structure_interface.png)
+
 For more instructions on setting up the project to run the pipeline in the `experimental pipline.ipynb` file, we sketch out the directory structure with description below:
 
 * The __`data/`__ directory contains input or output data for the entire process. Four current data files in this directory is required for the data generation process.
@@ -30,10 +32,10 @@ For more instructions on setting up the project to run the pipeline in the `expe
   * The __`algo/`__ directory has the `expfinder.py` file which is the source code for the ExpFinder algorithm. For more details about the algorithm, please refer to our paper.
   * The __`controller`__ directory has the `generator.py` file which is used to control the data generation process.
   * The __`lib`__ directory has four different python files serving different purposes as:
-    * The `np_extractor.py` file aims to extract noun phrases from documents (using the `tokenization` module below) and estimates N-gram TFIDF for each noun phrase.
-    * The `semantic.py` file aims to vectorise every single phrase by using the SciBert model.
+    * The `extractor.py` file aims to extract noun phrases from documents (using the `tokenization` module below).
+    * The `vectorizer.py` file aims to vectorise every single phrase by using the SciBert model.
     * The `tokenization.py` file aims to extract tokens and noun phrases with their statistical information. Note that this contains the parser for the noun phrase extraction.
-    * The `weight.py` file aims to calculate personalised weights for given vectors or matrices.
+    * The `weight.py` file aims to calculate weights for given vectors or matrices (e.g., personalised weights or N-gram TFIDF).
 * The __`scripts/`__ directory contains scripts for controlling all processes of a particular pipeline or demonstrating an example of a particular process.
 * The __`experimental pipeline.ipynb`__ file contains pipelines for the entire process which is shown in the __Demo__ section below.
 
@@ -43,11 +45,11 @@ For more instructions on setting up the project to run the pipeline in the `expe
 
 In this section, we describe the demo of ExpFinder in the __`experimental pipeline.ipynb`__ file. The flow of the demo is presented as follows:
 
-* In the preparation phase, raw data (experts, their associated documents, and topics) is read and transform to a proper format like dataframes or vectors.
+* In the preparation phase, raw data (experts, their documents, and topics) is read and transform to a proper format like dataframes or vectors.
 * In the generation phase, we apply statistical models to generate data for our *ExpFinder* algorithm. These includes:
   * Expert-document, document-phrase, document-topic and personalised matrices
   * Expert-document counted vector (counting a number of documents per expert) and Document-expert counted vector (counting a number of experts per document)
-* In the training phase, we fitted all generated data into the ExpFinder algorithm with the best hyperparameters based on the empirical experiement. Please refer to our paper for more details. Then, we obtain results from the model which contain authority scores (weights of experts over topics) and hub scores (weights of documents over topics).
+* In the training phase, we fitted all generated data into the ExpFinder algorithm with the best hyperparameters based on the empirical experiement. Please refer to our paper for more details. Then, we obtain results from the model which contain reinforced weights of experts and documents given topics.
 
 ## Citation
 
