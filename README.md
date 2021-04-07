@@ -65,3 +65,16 @@ If you use `ExpFinder` in your research, please cite [ExpFinder: An Ensemble Exp
       primaryClass={cs.IR}
 }
 ```
+
+and [An open-source framework for ExpFinder integrating N-gram vector space model and μCO-HITS](https://doi.org/10.1016/j.simpa.2021.100069)
+
+```
+@article{du2021open,
+  title={An open-source framework for ExpFinder integrating N-gram vector space model and $\mu$CO-HITS},
+  author={Du, Hung and Kang, Yong-Bin},
+  journal={Software Impacts},
+  pages={100069},
+  year={2021},
+  publisher={Elsevier}
+}
+```
