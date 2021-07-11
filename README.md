@@ -51,6 +51,13 @@ In this section, we describe the demo of ExpFinder in the __`experimental pipeli
   * Expert-document counted vector (counting a number of documents per expert) and Document-expert counted vector (counting a number of experts per document)
 * In the training phase, we fitted all generated data into the ExpFinder algorithm with the best hyperparameters based on the empirical experiement. Please refer to our paper for more details. Then, we obtain results from the model which contain reinforced weights of experts and documents given topics.
 
+## Publi datasets
+
+Currently, many datasets in our publication(s) below are unavailable. Thus, we decided to re-publish all datasets that we use for experimenting our `ExpFinder` framework. You can find the zip file of all datasets in the `public_data` directory. The zip file contains the following datasets:
+
+1. `LExR` is the Lattes Expertise Retrieval collection for expertise retrieval in academic. More details about the dataset can be found in [The LExR Collection for Expertise Retrieval in Academia](https://dl.acm.org/doi/10.1145/2911451.2914678).
+2. `IR-CL-SW` are filtered subsets of DBLP dataset in [Benchmarking domain-specific expert search using workshop program committees](https://dl.acm.org/doi/abs/10.1145/2508497.2508501). The original version of these three datasets can be also found at [this website](http://toinebogers.com/?page_id=240).
+
 ## Citation
 
 If you use `ExpFinder` in your research, please cite [ExpFinder: An Ensemble Expert Finding Model Integrating N-gram Vector Space Model and μCO-HITS](https://arxiv.org/abs/2101.06821)
