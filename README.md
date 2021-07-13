@@ -51,7 +51,7 @@ In this section, we describe the demo of ExpFinder in the __`experimental pipeli
   * Expert-document counted vector (counting a number of documents per expert) and Document-expert counted vector (counting a number of experts per document)
 * In the training phase, we fitted all generated data into the ExpFinder algorithm with the best hyperparameters based on the empirical experiement. Please refer to our paper for more details. Then, we obtain results from the model which contain reinforced weights of experts and documents given topics.
 
-## Publi datasets
+## Public datasets
 
 Currently, many datasets in our publication(s) below are unavailable. Thus, we decided to re-publish all datasets that we use for experimenting our `ExpFinder` framework. You can find the zip file of all datasets in the `public_data` directory. The zip file contains the following datasets:
 
