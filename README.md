@@ -1,4 +1,4 @@
-# ExpFinder: An Ensemble Expert Finding Model Integrating N-gram Vector Space Model and μCO-HITS
+# ExpFinder: An Ensemble Model for Expert Finding from Text-based Expertise Data
 
 ## Introduction
 <p align="justify">
@@ -73,6 +73,7 @@ If you use `ExpFinder` in your research, please cite [ExpFinder: An Ensemble Exp
 }
 ```
 
+<!--
 and [An open-source framework for ExpFinder integrating N-gram vector space model and μCO-HITS](https://doi.org/10.1016/j.simpa.2021.100069)
 
 ```
@@ -85,3 +86,4 @@ and [An open-source framework for ExpFinder integrating N-gram vector space mode
   publisher={Elsevier}
 }
 ```
+-->
