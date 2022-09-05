@@ -59,7 +59,7 @@ Currently, many datasets in our publication(s) below are unavailable. Thus, we d
 2. `IR-CL-SW` are filtered subsets of DBLP dataset in [Benchmarking domain-specific expert search using workshop program committees](https://dl.acm.org/doi/abs/10.1145/2508497.2508501). The original version of these three datasets can be also found at [this website](http://toinebogers.com/?page_id=240).
 
 ## Citation
-If you use `ExpFinder` in your research, please cite [ExpFinder: An Ensemble Expert Finding Model Integrating N-gram Vector Space Model and μCO-HITS](https://arxiv.org/abs/2101.06821)
+If you use `ExpFinder` in your research, please cite [ExpFinder: A hybrid model for expert finding from text-based expertise data](https://doi.org/10.1016/j.eswa.2022.118691)
 
 ```
 @misc{kang2022expfinder,
