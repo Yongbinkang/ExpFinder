@@ -58,6 +58,8 @@ Currently, many datasets in our publication(s) below are unavailable. Thus, we d
 1. `LExR` is the Lattes Expertise Retrieval collection for expertise retrieval in academic. More details about the dataset can be found in [The LExR Collection for Expertise Retrieval in Academia](https://dl.acm.org/doi/10.1145/2911451.2914678).
 2. `IR-CL-SW` are filtered subsets of DBLP dataset in [Benchmarking domain-specific expert search using workshop program committees](https://dl.acm.org/doi/abs/10.1145/2508497.2508501). The original version of these three datasets can be also found at [this website](http://toinebogers.com/?page_id=240).
 
+(Updated in July 2024: the public data is available [here](https://drive.google.com/file/d/1uQxIkhacI0oar65Biu0jocfx5IU6jo9S/view?usp=sharing)
+
 ## Citation
 If you use `ExpFinder` in your research, please cite [ExpFinder: A hybrid model for expert finding from text-based expertise data](https://doi.org/10.1016/j.eswa.2022.118691)
 
