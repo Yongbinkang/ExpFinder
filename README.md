@@ -1,4 +1,4 @@
-# ExpFinder: An Ensemble Model for Expert Finding from Text-based Expertise Data
+# ExpFinder: An Ensemble Expert Finding Model Integrating N-gram Vector Space Model and μCO-HITS
 
 ## Introduction
 <p align="justify">
@@ -58,23 +58,21 @@ Currently, many datasets in our publication(s) below are unavailable. Thus, we d
 1. `LExR` is the Lattes Expertise Retrieval collection for expertise retrieval in academic. More details about the dataset can be found in [The LExR Collection for Expertise Retrieval in Academia](https://dl.acm.org/doi/10.1145/2911451.2914678).
 2. `IR-CL-SW` are filtered subsets of DBLP dataset in [Benchmarking domain-specific expert search using workshop program committees](https://dl.acm.org/doi/abs/10.1145/2508497.2508501). The original version of these three datasets can be also found at [this website](http://toinebogers.com/?page_id=240).
 
-(Updated in July 2024: the public data is available [here](https://drive.google.com/file/d/1uQxIkhacI0oar65Biu0jocfx5IU6jo9S/view?usp=sharing)
-
 ## Citation
-If you use `ExpFinder` in your research, please cite [ExpFinder: A hybrid model for expert finding from text-based expertise data](https://doi.org/10.1016/j.eswa.2022.118691)
+
+If you use `ExpFinder` in your research, please cite [ExpFinder: An Ensemble Expert Finding Model Integrating N-gram Vector Space Model and μCO-HITS](https://arxiv.org/abs/2101.06821)
 
 ```
-@misc{kang2022expfinder,
-      title={ExpFinder: A hybrid model for expert finding from text-based expertise data}, 
+@misc{kang2021expfinder,
+      title={ExpFinder: An Ensemble Expert Finding Model Integrating $N$-gram Vector Space Model and $\mu$CO-HITS}, 
       author={Yong-Bin Kang and Hung Du and Abdur Rahim Mohammad Forkan and Prem Prakash Jayaraman and Amir Aryani and Timos Sellis},
-      year={2022},
-      journal={Expert Systems with Applications},
-      volume={211},
-      doi={https://doi.org/10.1016/j.eswa.2022.118691}
+      year={2021},
+      eprint={2101.06821},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR}
 }
 ```
 
-<!--
 and [An open-source framework for ExpFinder integrating N-gram vector space model and μCO-HITS](https://doi.org/10.1016/j.simpa.2021.100069)
 
 ```
@@ -87,4 +85,3 @@ and [An open-source framework for ExpFinder integrating N-gram vector space mode
   publisher={Elsevier}
 }
 ```
--->
