@@ -1,0 +1,1 @@
+["health application", "natural language processing", "computer vision"]
